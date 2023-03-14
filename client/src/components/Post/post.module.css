@@ -1,0 +1,128 @@
+.form{
+    margin: 0 auto;
+    width: 44%;
+    height: max-content;
+    background-color: rgb(23, 23, 23);
+    border: 20px solid burlywood;
+    padding-left: 35px;
+    padding-right: 35px;
+    padding-top: 10px;
+    padding-bottom: 0px;    
+    margin-bottom: 80px;
+}
+
+.p{
+    font-size: 14px;
+    color: red;
+    margin-top: 1px;
+    margin-left: 40px;
+}
+
+.divs{
+    margin-bottom: 1px;
+}
+
+.titulo {
+    display: flex;
+    justify-content: center;
+    color: white
+}
+
+.label{
+    margin-left: 40px;
+    font-size: medium;
+    font-weight: bold;
+    color: white
+}
+
+.inputName {
+    width: 86%;
+    height: 30px;
+    font-size: 15px;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    color: white;
+    background-color: transparent;
+    margin-left: 40px;
+}
+
+.inputImage{
+    width: 86%;
+    height: 30px;
+    font-size: 15px;
+    color: white;
+    margin-left: 40px;
+    background-color: transparent;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+}
+
+.inputSummary{
+    width: 86%;
+    margin-left: 40px;
+    height: 70px;
+    font-size: 15px;
+    color: white;
+    background-color: transparent;
+}
+
+.inputHealth{
+    width: 86%;
+    height: 30px;
+    font-size: 15px;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    color: white;
+    margin-left: 40px;
+    background-color: transparent;
+}
+
+.inputInstructions{
+    width: 86%;
+    height: 30px;
+    font-size: 15px;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    margin-bottom: 20px;
+    color: white;
+    margin-left: 40px;
+    background-color: transparent;
+}
+
+.botonInstruction{
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    margin-left: 40px;
+    /* color: rgb(233, 226, 226); */
+}
+
+.dietas{
+    display: inline-block;
+    margin-right: 11px;
+    font-size: 19px;
+    color: white;
+    margin-left: 40px;
+}
+
+.post{
+    padding-top: 15px;
+    padding-bottom: 20px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.postBtn{
+    width: 200px;
+    height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.postBtn:disabled{
+    cursor: not-allowed; 
+}

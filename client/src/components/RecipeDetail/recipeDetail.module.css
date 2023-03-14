@@ -1,0 +1,75 @@
+.fondo{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url('./fondoMantelVertical.jpg');
+}
+
+.btn{
+    height: 40px;
+    width: 130px;
+    background-color: rgb(23, 23, 23);
+    border: 5px solid burlywood;
+    margin-left: 10px;
+    margin-top: 30px;
+    color: white;
+}
+
+.pizarron{
+    background-color: rgb(23, 23, 23);
+    border: 20px solid burlywood;
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-top: 30px;
+}
+
+.name{
+    display: block;
+    margin: 0 auto;
+    margin-top: 30px;
+    width: fit-content;
+    color: white;
+    /* background-color: rgba(255, 255, 255, 0.717); */
+}
+
+.image{
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.p{
+    margin-left: 40px;
+    margin-right: 40px;
+    font-size: large;
+    font-weight: 500;
+    color: white;
+    /* background-color: rgba(255, 255, 255, 0.717); */
+}
+
+.healthScore{
+    width: max-content;
+    margin-left: 40px;
+    color: white;
+    /* background-color: rgba(255, 255, 255, 0.717); */
+}
+
+.instructions{
+    margin-right: 40px;
+    font-size: large;
+    font-weight: 500;
+    margin-left: 40px;
+    color: white;
+    /* background-color: rgba(255, 255, 255, 0.717); */
+}
+
+.dietas{
+    display: flex;
+    justify-content: space-evenly;
+    margin-left: 40px;
+    margin-right: 40px;
+    font-size: large;
+    font-weight: 500;
+    color: white;
+    /* background-color: rgba(255, 255, 255, 0.717); */
+}

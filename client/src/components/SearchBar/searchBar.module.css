@@ -1,0 +1,30 @@
+.div{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 30px;
+    /* width: max-content; */
+    /* margin-left: 130px; */
+}
+
+.ul{
+    list-style: none;
+}
+
+.inputSearch{
+    height: 30px;
+    border-radius: 5px;
+}
+
+.btn{
+    height: 28px;
+    border-radius: 5px;
+    background-color: rgb(226, 223, 223);
+    cursor: pointer;
+}
+
+.select{
+    height: 30px;
+    border-radius: 5px;
+    width: fit-content;
+    text-align: center;
+}
