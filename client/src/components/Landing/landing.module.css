@@ -41,5 +41,6 @@
 
 .btn:hover{
     font-size: 77px;
+    border-bottom: none;
 }
 

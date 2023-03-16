@@ -5,6 +5,7 @@ import { allRecipes, getDiets } from '../../redux/actions';
 import Paginado from '../Paginado/Paginado';
 import RecipesContainer from '../RecipesContainer/RecipesContainer'
 import SearchBar from '../SearchBar/SearchBar';
+import Loader from '../Loader/Loader'
 //import style from 'home.module.css'
 
 const Home = () => {
@@ -25,6 +26,7 @@ const Home = () => {
         dispatch(getDiets())
     },[dispatch]);
 
+    if(recipes.length){
     return(
         <div>
             <SearchBar />
@@ -37,6 +39,13 @@ const Home = () => {
             />
         </div>
     )
+    } else{
+        return(
+            <div>
+            <Loader />
+            </div>
+        )
+    }
 };
 
 export default Home;

@@ -27,13 +27,11 @@ const Post = () => {
     
     const diets = useSelector(state=>state.diets)
 
-    
-
     const [errors, setErrors] = useState({}); // estado local para errores
     
     const [steps, setSteps] = useState([]);
     const addStep = (event) => {
-        setSteps([...steps,""]);
+        setSteps([...steps, '']);
 
         setPost({
             ...post,
@@ -44,14 +42,14 @@ const Post = () => {
     const postValidator = (post) => {
         const errors = {};
 
-        if(!post.name.length) errors.name = "Debe ingresar el nombre de la receta";
-        if(!post.image) errors.image = "Debe ingresar una imagen de la receta";
-        if(!post.summary.length) errors.summary = "Debe ingresar el resumen de la receta";
-        if(!post.healthScore) errors.healthScore = "Debe ingresar el nivel de comida saludable de la receta";
-        if(post.healthScore < 0) errors.healthScore = "El nivel de comida saludable no puede ser menor a 0";
-        if(post.healthScore > 100) errors.healthScore = "El nivel de comida saludable no puede ser mayor a 100"
-        if(!post.analyzedInstructions.length) errors.analyzedInstructions = "Debe ingresar el paso a paso de la receta";
-        if(!post.dietas.length) errors.dietas = "Debe ingresar las dietas a las que pertenece la receta"
+        if(!post.name.length) errors.name = "Recipe name can't be empty";
+        if(!post.image) errors.image = "Recipe image can't be empty";
+        if(!post.summary.length) errors.summary = "Recipe summary can't be empty";
+        if(!post.healthScore) errors.healthScore = "Recipe Health Score can't be empty";
+        if(post.healthScore < 0) errors.healthScore = "Recipe Health Score can't be less than 0";
+        if(post.healthScore > 100) errors.healthScore = "Recipe Health Score can't be higher than 100"
+        if(!post.analyzedInstructions.length) errors.analyzedInstructions = "The step-by-step instructions of the recipe must be entered";
+        if(!post.dietas.length) errors.dietas = "It's necessary to input the diets that the recipe belongs to";
         
         return errors;
     };
@@ -113,7 +111,7 @@ const Post = () => {
 
             <div className={style.divs}>
                 <label htmlFor='image' className={style.label}>IMAGE</label>
-                <input type='text' id='image' name='image' value={post.image} onChange={changeHandler} className={style.inputImage} placeholder='URL for a recipe image'/>
+                <input type='text' id='image' name='image' value={post.image} onChange={changeHandler} className={style.inputImage} placeholder='URL for the recipe image'/>
                 <p className={style.p}>{errors.image && errors.image}</p>
             </div>
 

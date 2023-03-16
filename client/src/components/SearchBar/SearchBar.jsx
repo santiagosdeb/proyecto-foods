@@ -28,13 +28,7 @@ const SearchBar = () => {
     };
 
     const filterByID = (event) => {
-        console.log(event.target.value);
         dispatch(filterByApiOrDatabase(event.target.value))
-    };
-
-    const resetHandler = (event) => {
-        event.preventDefault();
-        dispatch(allRecipes())
     };
     
     return(
@@ -70,8 +64,6 @@ const SearchBar = () => {
                 <option value='apiRecipes'>Recipes from API</option>
                 <option value='databaseRecipes'>Recipes from Database</option>
             </select>
-
-            <button onClick={resetHandler} className={style.btn}>RESET FILTERS</button>
         </div>  
     )
 };

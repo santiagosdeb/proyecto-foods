@@ -3,6 +3,7 @@ import { useHistory, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { cleanDetail, getRecipeDetail } from '../../redux/actions';
 import style from './recipeDetail.module.css'
+import Loader from '../Loader/Loader';
 
 
 const RecipeDetail = () => {
@@ -20,7 +21,7 @@ const RecipeDetail = () => {
     },[dispatch, id]);
 
     const handleClick = (event) => {
-        event.preventDefeault();
+        event.preventDefault();
         history.push('/home');
     }
 
@@ -32,13 +33,24 @@ const RecipeDetail = () => {
             <h1 className={style.name}>{recipeDetail.name}</h1>
             <img src={recipeDetail.image} alt='imagen' className={style.image}/>
             <h3 className={style.healthScore}>Health Score: {recipeDetail.healthScore}</h3>
-            <p className={style.p}>{recipeDetail.summary}</p>
+            {/* <p className={style.p}>{recipeDetail.summary}</p> */}
+            <p dangerouslySetInnerHTML={{__html:recipeDetail.summary}} className={style.p}/>
             <ul className={style.instructions}>
-            {recipeDetail.analyzedInstructions.map((instr, index) => {
-                return(
-                    <li key={index} className={style.li}>Paso {index + 1}: {instr}</li>
-                )
-            })}
+                {
+                isNaN(id)  
+                ? recipeDetail.analyzedInstructions.slice(0, -1).map((instr, index) => {
+                    return (
+                        <li key={index} className={style.li}>Step {index + 1}: {instr}</li>
+                    )
+                }) 
+                : recipeDetail.analyzedInstructions.map((arr) => {
+                    return arr.map((instr, index) => {
+                        return(
+                            <li key={index} className={style.li}>Step {index + 1}: {instr}</li>
+                        )
+                    })
+                })  
+                }
             </ul>
             <ul className={style.dietas}>
                 Diets:
@@ -53,8 +65,7 @@ const RecipeDetail = () => {
     )}else{
         return(
             <div>
-                {console.log(recipeDetail)}
-                <h1>LOADING...</h1>
+                <Loader />
             </div>
         )
     }

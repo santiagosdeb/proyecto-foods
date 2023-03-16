@@ -2,6 +2,8 @@
     position: absolute;
     top: 0;
     left: 0;
+    right: 0;
+    bottom: 0;
     background-image: url('./fondoMantelVertical.jpg');
 }
 
@@ -13,6 +15,11 @@
     margin-left: 10px;
     margin-top: 30px;
     color: white;
+    cursor: pointer;
+}
+
+.btn:hover{
+    transform: scale(1.05);
 }
 
 .pizarron{
@@ -20,7 +27,7 @@
     border: 20px solid burlywood;
     margin-left: 200px;
     margin-right: 200px;
-    margin-top: 30px;
+    /* margin-top: 30px; */
 }
 
 .name{
@@ -36,6 +43,8 @@
     display: block;
     margin: 0 auto;
     margin-top: 20px;
+    width: 468px;
+    height: 346.5px;
 }
 
 .p{
