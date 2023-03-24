@@ -10,71 +10,67 @@
     cursor: pointer;
     transform: scaleX(-1);
     margin-right: 15px;
-    background-color: rgb(23, 23, 23);
-    border: 2px solid burlywood;
-    color: white;
+    color: black;
     font-size: medium;
     align-content: center;
-    border-radius: 100%;
+    background-color: transparent;
+    border: none;
 }
 
 .atras:disabled{
-    background-color: #e0e0e0;
-    color: #999999;
-    cursor: not-allowed;
-    border: none;
+    display: none;
 }
 
 .atras:hover{
     transform: scale(1.1);
     transform: scaleX(-1);
+    border-radius: 50%;
+    background-color: #eb7f19;
 }
 
 .adelante{
     cursor: pointer;
-    background-color: rgb(23, 23, 23);
-    border: 2px solid burlywood;
-    color: white;
+    color: black;
     font-size: medium;
     align-content: center;
-    border-radius: 100%;
+    background-color: transparent;
+    border: none;
 }
 
 .adelante:disabled{
-    background-color: #e0e0e0;
-    color: #999999;
-    cursor: not-allowed;
-    border: none;
+    display: none;
 }
 
 .adelante:hover{
     transform: scale(1.1);
+    border-radius: 50%;
+    background-color: #eb7f19;
 }
 
 .numPag{
     cursor: pointer;
     margin-right: 15px;
     padding: 8px 16px;
-    border-radius: 100%;
-    background-color: rgb(240, 240, 240);
-    background-color: rgb(23, 23, 23);
-    border: 2px solid burlywood;
-    color: white;
+    background-color: transparent;
+    border: none;
+    color: black;
     font-size: medium;
     align-content: center;
 }
 
 .numPag:hover{
+    border-radius: 50%;
+    background-color: #eb7f19;
     transform: scale(1.1);
 }
 
 .numPagSelec{
     margin-right: 15px;
     padding: 8px 16px;
-    border-radius: 100%;
-    background-color: rgb(0, 0, 0);
-    border: 2px solid burlywood;
-    color: white;
+    border-radius: 50%;
+    background-color: #eb7f19;
+    border: none;
+    color: black;
     font-size: medium;
     align-content: center;
 }

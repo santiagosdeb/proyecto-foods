@@ -5,7 +5,6 @@ export const GET_RECIPE_DETAIL = "GET_RECIPE_DETAIL";
 export const CLEAN_RECIPES = "CLEAN_RECIPES";
 export const CLEAN_DETAIL = "CLEAN_DETAIL";
 export const GET_SEARCHED_RECIPES = "GET_SEARCHED_RECIPES";
-export const CLEAN_SEARCHED_RECIPES = "CLEAN_SEARCHED_RECIPES";
 export const GET_DIETS = "GET_DIETS";
 export const ORDER_RECIPES = "ORDER_RECIPES";
 export const FILTER_BY_DIETS = "FILTER_BY_DIETS";
@@ -44,17 +43,17 @@ export const cleanDetail = () => {
 
 export const searchedRecipes = (recipe) => {
     return async function (dispatch) {
-        const info = await axios.get(`http://localhost:3001/recipes?name=${recipe}`);
-        const recipes = info.data;
-        dispatch({
-            type: GET_SEARCHED_RECIPES,
-            payload: recipes
-        })
-    }
-};
-
-export const cleanSearchedRecipes = () => {
-    return {type: CLEAN_SEARCHED_RECIPES}
+        try {
+            const info = await axios.get(`http://localhost:3001/recipes?name=${recipe}`);
+            const recipes = info.data;
+            dispatch({
+                type: GET_SEARCHED_RECIPES,
+                payload: recipes
+            });
+        } catch (error) {
+            alert(error.response.data)
+        }
+    };
 };
 
 export const getDiets = () => {
@@ -109,7 +108,6 @@ export const filterRecipesByDiet = (diet) => {
         if(diet) {
             recipes = recipesCopy;
             var response = recipes.filter((recipe) => recipe.dietas.includes(diet))
-            console.log('se consologuea este primero o la entrada al reducer?');
         } else{
             response = recipesCopy;
         };
@@ -121,37 +119,4 @@ export const filterRecipesByDiet = (diet) => {
     };
 };
 
-export const filterByApiOrDatabase = (filt) => {
-    return function (dispatch, getState) {
-        let recipes = [...getState().recipes];
-        const recipesCopy = [...getState().recipesCopy]
-
-        if(filt === 'apiRecipes'){
-            recipes = recipesCopy;
-            const apiRecipes = recipes.filter((recipe) => { 
-                return typeof(recipe.id) === 'number'
-            });
-
-            dispatch({
-                type: FILTER_BY_API_OR_DATABASE,
-                payload: apiRecipes,
-            });
-        } else if(filt === 'databaseRecipes') {
-            recipes = recipesCopy;
-            const databaseRecipes = recipes.filter((recipe) => { 
-                return typeof(recipe.id) === 'string'
-            });
-
-            dispatch({
-                type: FILTER_BY_API_OR_DATABASE,
-                payload: databaseRecipes,
-            });
-        }else{
-            dispatch({
-                type: FILTER_BY_API_OR_DATABASE,
-                payload: recipesCopy,
-            });
-        };
-    };
-};
 

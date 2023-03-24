@@ -1,23 +1,16 @@
 .fondo{
-    background-color: rgb(23, 23, 23);
-    border: 20px solid burlywood;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 600px;
-    height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .loader{
-    border: 4px solid rgba(255, 255, 255, 0.265);
+    margin-top: 250px;
+    border: 4px solid rgb(200, 210, 210);
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    border-left-color: white;
+    border-left-color: #eb7f19;
     animation: spin 1s ease infinite;
 }
 

@@ -29,12 +29,10 @@ const RecipeDetail = () => {
     return(
         <div className={style.fondo}>
             <button onClick={handleClick} className={style.btn}>GO BACK</button>
-         <div className={style.pizarron}>
+        <div className={style.pizarron}>
             <h1 className={style.name}>{recipeDetail.name}</h1>
             <img src={recipeDetail.image} alt='imagen' className={style.image}/>
-            <h3 className={style.healthScore}>Health Score: {recipeDetail.healthScore}</h3>
-            {/* <p className={style.p}>{recipeDetail.summary}</p> */}
-            <p dangerouslySetInnerHTML={{__html:recipeDetail.summary}} className={style.p}/>
+            <p dangerouslySetInnerHTML={{__html:recipeDetail.summary}} className={`${style.p} link`}/><br/>
             <ul className={style.instructions}>
                 {
                 isNaN(id)  
@@ -51,15 +49,15 @@ const RecipeDetail = () => {
                     })
                 })  
                 }
-            </ul>
+            </ul><br/>
             <ul className={style.dietas}>
-                Diets:
             {recipeDetail.dietas.map(diet => {
                 return(
                     <li key={diet}>{diet}</li>
                 )
             })}
-            </ul>
+            </ul><br/>
+            <h4 className={style.healthScore}>Health Score: {recipeDetail.healthScore}</h4>
         </div>
         </div>
     )}else{

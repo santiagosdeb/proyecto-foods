@@ -9,8 +9,8 @@ import RecipeDetail from './components/RecipeDetail/RecipeDetail';
 function App() {
   return (
     <div className='app'>
-    <NavBar />
     <Route exact path='/' component={Landing}/>
+    <Route path='/home' component={NavBar}/>
     <Route path='/home' component={Home}/>
     <Route path='/post' component={Post} />
     <Route path='/recipe/:id' component={RecipeDetail} />

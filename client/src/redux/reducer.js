@@ -1,6 +1,4 @@
-import { CLEAN_DETAIL, CLEAN_RECIPES, CLEAN_SEARCHED_RECIPES, 
-         FILTER_BY_API_OR_DATABASE, 
-         FILTER_BY_DIETS, GET_DIETS, GET_RECIPES, GET_RECIPE_DETAIL, 
+import { CLEAN_DETAIL, CLEAN_RECIPES,FILTER_BY_DIETS, GET_DIETS, GET_RECIPES, GET_RECIPE_DETAIL, 
          GET_SEARCHED_RECIPES, ORDER_RECIPES } from "./actions";
 
 const initialState = {
@@ -38,11 +36,6 @@ export default function reducer(state=initialState, action) {
                 ...state,
                 recipes: action.payload,
             };
-        case CLEAN_SEARCHED_RECIPES:
-            return{
-                ...state,
-                recipes: [],
-            };
         case GET_DIETS:
             return{
                 ...state,
@@ -57,11 +50,6 @@ export default function reducer(state=initialState, action) {
             return{
             ...state,
             recipes: action.payload,
-            };
-        case FILTER_BY_API_OR_DATABASE:
-            return{
-                ...state,
-                recipes: action.payload,
             };
         default:
            return {...state}

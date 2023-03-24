@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { allRecipes, getDiets } from '../../redux/actions';
+import { allRecipes, cleanAllRecipes, getDiets } from '../../redux/actions';
 //import OrderFilterBar from '../OrderFilterBar/OrderFilterBar';
 import Paginado from '../Paginado/Paginado';
 import RecipesContainer from '../RecipesContainer/RecipesContainer'
@@ -13,6 +13,7 @@ const Home = () => {
     const recipes = useSelector(state=>state.recipes)
 
     const [currentPage, setCurrentPage] = useState(1);
+    // eslint-disable-next-line
     const [recipesPerPage, setRecipesPerPage] = useState(9);
 
     const indexOfLastRecipe = currentPage * recipesPerPage;
@@ -24,12 +25,16 @@ const Home = () => {
     useEffect(() => {
         dispatch(allRecipes())
         dispatch(getDiets())
+
+        return function() {
+            dispatch(cleanAllRecipes())
+        }
     },[dispatch]);
 
     if(recipes.length){
     return(
         <div>
-            <SearchBar />
+            <SearchBar setCurrentPage={setCurrentPage}/>
             <RecipesContainer key={recipes.id} recipes={currentRecipes}/>
             <Paginado
                 recipes={recipes.length}

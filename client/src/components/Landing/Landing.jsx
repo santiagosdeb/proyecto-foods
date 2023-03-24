@@ -7,7 +7,7 @@ const Landing = () => {
         <div className={style.fondo}>
         <div className={style.pizarra}>
             <Link to='/home'>
-                <button className={style.btn}>INGRESAR</button>
+                <button className={style.btn}>Explore Recipes</button>
             </Link>
         </div>
         </div>
