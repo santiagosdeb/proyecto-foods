@@ -44,8 +44,12 @@ router.get('/', async(req,res) => {
     };
     if(name) {
         try {
-            const info = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=100&addRecipeInformation=true&titleMatch=${name}`) 
-            const apiRecipesByName = info.data.results.map(recipe => {
+            //const info = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=100&addRecipeInformation=true&titleMatch=${name}`) 
+            const info = await axios.get('https://run.mocky.io/v3/84b3f19c-7642-4552-b69c-c53742badee5')
+            
+            const apiRecipesByName = info.data.results
+            .filter(recipe => recipe.title.toLowerCase().includes(name.toLowerCase()))
+            .map(recipe => {
                 let diets = recipe.diets.map(diet => {return diet})
 
                 if(diets.includes("vegan")){
@@ -74,12 +78,12 @@ router.get('/', async(req,res) => {
             const allGamesByName = [ ...dbRecipesByName, ...apiRecipesByName ];
             
             if(!allGamesByName.length){
-                return res.status(404).send("That recipe doesn't exist!")
+                return res.status(404).send("That recipe isn't in our system!")
             }
 
             res.send(allGamesByName)
         } catch (error) {
-            res.status(404).send("That recipe doesn't exist!")
+            res.status(404).send("That recipe isn't in our system!")
         }
     };
 });
@@ -89,31 +93,39 @@ router.get('/:id', async(req,res)=>{
 
     if(Number(id)){
      try {
-        const info = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`)
+        const info = await axios.get('https://run.mocky.io/v3/84b3f19c-7642-4552-b69c-c53742badee5')
+        
+        const recipe = info.data.results.find(recipe => recipe.id === Number(id))
 
-        let diets = info.data.diets.map(diet => {return diet})
-
-        if(diets.includes("vegan")){
-            diets.push("vegetarian")
-        };
-        return res.send({
-            id: info.data.id,
-            name: info.data.title,
-            image: info.data.image,
-            summary: info.data.summary,
-            healthScore: info.data.healthScore,
-            analyzedInstructions: info.data.analyzedInstructions.map(inst => { 
+        if(recipe) {
+            let diets = recipe.diets.map(diet=>diet);
+            if(diets.includes("vegan")){
+                diets.push("vegetarian")
+            };
+        
+        const idRecipe = {
+            id: recipe.id,
+            name: recipe.title,
+            image: recipe.image,
+            summary: recipe.summary,
+            healthScore: recipe.healthScore,
+            analyzedInstructions: recipe.analyzedInstructions.map(inst => { 
                 return inst.steps.map(step => {return step.step})
             }),
-            dietas: diets
-        });    
+            dietas: diets,
+        };
+
+        res.send(idRecipe)
+    }else{
+        res.status(404).send("Recipe not found")
+    }
     } catch (error) {
         res.send(error.message)       
     }
- }else{
+  }else{
     try {
         const recipeByIdDB = await Recipe.findByPk(id);
-        if(!recipeByIdDB) return res.status(404).send("No hay recetas con este id")
+        if(!recipeByIdDB) return res.status(404).send("Recipe not found")
         return res.send(recipeByIdDB)
     } catch (error) {
         res.send(error.message)
